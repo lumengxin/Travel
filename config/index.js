@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/v19/travel/',
     // proxyTable: {
     //   '/api': {
     //     // changeOrigin: true,
@@ -37,9 +37,9 @@ module.exports = {
     */
 
     // Various Dev Server settings
-    host: '0.0.0.0', // can be overwritten by process.env.HOST
+    // host: '0.0.0.0', // can be overwritten by process.env.HOST
     disableHostCheck: true,
-    // host: '5198fa08.ngrok.io/',
+    host: '127.0.0.1',
     port: 8085, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
@@ -77,7 +77,7 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     // assetsPublicPath: '/',
-    // 打包好的文件部署到后端 travel 文件夹中
+    // 打包好的文件部署到后端 v19/travel 文件夹中
     assetsPublicPath: '/v19/travel/',
 
     /**
