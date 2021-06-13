@@ -2,7 +2,7 @@
   <div class="home">
     <home-header></home-header>
     <home-swiper :list="swiperList"></home-swiper>
-    <p>第一次github actions自动化构建测试 - 3</p>
+    <p>第一次github actions自动化构建测试 - 4</p>
     <home-icons :list="iconsList"></home-icons>
     <home-recommend :list="recommendList"></home-recommend>
     <home-weekend :list="weekendList"></home-weekend>
