@@ -1,14 +1,22 @@
-name: Build app and deploy to aliyun
+# name字段是 workflow 的名称
+name: Travel应用自动构建并发布到阿里云服务器
+# on字段指定触发 workflow 的条件，通常是某些事件.除了代码库事件，GitHub Actions 也支持外部事件触发，或者定时运行。
 on:
   #监听push操作
   push:
+    # 可以限定分支或标签
     branches:
       # master分支，你也可以改成其他分支
       - master
+# 表示要执行的一项或多项任务
 jobs:
+  # 每一项任务的job_id
   build:
+    # name字段是任务的说明
+    name: '打包构建并上传到服务器'
+    # runs-on字段指定运行所需要的虚拟机环境。它是必填字段
     runs-on: ubuntu-latest
-
+    # steps字段指定每个 Job 的运行步骤，可以包含一个或多个步骤
     steps:
       - uses: actions/checkout@v1
       - name: Install Node.js

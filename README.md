@@ -100,7 +100,7 @@ pages () {
 - 可能出现`Warning: Permanently added '47.97.231.9' (ECDSA) to the list of known hosts.` 
   vim ~/.ssh/config创建config文件，写入 UserKnownHostsFile ~/.ssh/known_hosts(待验证)
 - 可能出现的提醒权限不够
-  chmod 700 ~/.ssh/authorized_keys(待验证)
+  chmod 700 ~/.ssh/authorized_keys(待验证 - 非必须)
 
 
 3. 项目下建立`.github/workflows/ci.yml`文件，填入内容：
@@ -132,10 +132,25 @@ jobs:
       env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: '-rltgoDzvO --delete'
-          SOURCE: dist # 这是要复制到阿里云静态服务器的文件夹名称
-          REMOTE_HOST: '118.190.217.8' # 你的阿里云公网地址
-          REMOTE_USER: root # 阿里云登录后默认为 root 用户，并且所在文件夹为 root
-          TARGET: /root/node-server # 打包后的 dist 文件夹将放在 /root/node-server
+          SOURCE: 'travel' # 项目打包后的文件（默认为dist, 需要调整打包配置）
+          REMOTE_HOST: '118.190.217.8' # 阿里云公网地址
+          REMOTE_USER: 'root' # 阿里云登录后默认为 root 用户，并且所在文件夹为 root
+          TARGET: '/var/www/html/v19' # 打包后的 travel 文件夹将放在 /var/www/html/v19
 ```
 
+## github actions
 
+GitHub Actions 是 GitHub 的持续集成服务，于2018年10月推出。比如抓取代码、运行测试、登录远程服务器，发布到第三方服务等等。
+
+（1）workflow （工作流程）：持续集成一次运行的过程，就是一个 workflow。
+
+（2）job （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。
+
+（3）step（步骤）：每个 job 由多个 step 构成，一步步完成。
+
+（4）action （动作）：每个 step 可以依次执行一个或多个命令（action）。
+
+### 相关资料
+
+- [GitHub Actions 入门教程 - 阮一峰](http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
+- [官方文档](https://docs.github.com/cn/actions/reference/workflow-syntax-for-github-actions)
