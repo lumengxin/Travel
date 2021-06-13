@@ -90,7 +90,12 @@ pages () {
 
 2. 打开需要部署到阿里云的github项目，点击`setting - secrets - new secret`。
 
-secret名称为SERVER_SSH_KEY(命名规范)，将xxx.pem中内容赋值，点击完成。
+secret名称为SERVER_SSH_KEY(命名规范)，将xxx.pem中内容赋值，点击完成。(直接用的之前远程登录生成的xxx.pem不行)
+
+登录服务器：
+
+ssh-keygen -t rsa -C autodeployment -f deployment。生成密钥
+
 
 3. 项目下建立`.github/workflows/ci.yml`文件，填入内容：
 ```
