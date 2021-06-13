@@ -83,4 +83,48 @@ pages () {
 
 *城市字母表左右联动效果*
 
+## 自动化构建项目
+### github actions部署到阿里云
+
+1. 阿里云`创建SSH密钥对`，保存到电脑指定位置(xxx.pem)
+
+2. 打开需要部署到阿里云的github项目，点击`setting - secrets - new secret`。
+
+secret名称为SERVER_SSH_KEY(命名规范)，将xxx.pem中内容赋值，点击完成。
+
+3. 项目下建立`.github/workflows/ci.yml`文件，填入内容：
+```
+name: Build app and deploy to aliyun
+on:
+  #监听push操作
+  push:
+    branches:
+      # master分支，你也可以改成其他分支
+      - master
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.16.2'
+    - name: Install npm dependencies
+      run: npm install
+    - name: Run build task
+      run: npm run build
+    - name: Deploy to Server
+      uses: easingthemes/ssh-deploy@v2.1.5
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: '-rltgoDzvO --delete'
+          SOURCE: dist # 这是要复制到阿里云静态服务器的文件夹名称
+          REMOTE_HOST: '118.190.217.8' # 你的阿里云公网地址
+          REMOTE_USER: root # 阿里云登录后默认为 root 用户，并且所在文件夹为 root
+          TARGET: /root/node-server # 打包后的 dist 文件夹将放在 /root/node-server
+```
+
 

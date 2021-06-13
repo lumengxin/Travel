@@ -2,10 +2,10 @@
   <div class="wrapper">
     <!-- 初始空数组时会创建，导致开始为最后一张图片 使用v-if -->
     <swiper :options="swiperOption" v-if="showSwiper">
-    <swiper-slide v-for="item of list" :key="item.id">
-      <img class="swiper-img" :src="item.imgUrl" alt="img" />
-    </swiper-slide>
-    <div class="swiper-pagination"  slot="pagination"></div>
+      <swiper-slide v-for="item of list" :key="item.id">
+        <img class="swiper-img" :src="item.imgUrl" alt="img" />
+      </swiper-slide>
+      <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
   </div>
 </template>
@@ -40,7 +40,7 @@ export default {
       background #fff
   .wrapper
     width 100%
-    // 设置图片宽高比，预留图片位置
+    // 设置图片宽高比，预留图片位置(图片没加载出来时，不影响布局)
     overflow hidden
     // height 4rem
     height 0

@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     handleLetterClick (e) {
-      // console.log(e.target)
       this.$emit('change', e.target.innerHTML)
     },
     handleTouchStart () {
@@ -55,7 +54,8 @@ export default {
         this.timer = setTimeout(() => {
           // 79: 头部高度
           const touchY = e.touches[0].clientY - 79
-          console.log(e.touches[0].clientY)
+          // console.log("this.timer -> touchY", touchY)
+          // console.log(e.touches[0].clientY)
           // 20: 字母高度
           const index = Math.floor((touchY - this.startY) / 20)
           console.log(index)

@@ -34,9 +34,8 @@ export default {
   methods: {
     handleScroll () {
       // scroll全局事件，其他页面滚动也受影响
-      // console.log("scroll")
-      // console.log(document.documentElement.scrollTop)
       const top = document.documentElement.scrollTop
+      // console.log("handleScroll -> top", top)
       if (top > 60) {
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
@@ -51,13 +50,21 @@ export default {
       }
     }
   },
-  activated () {
+  mounted () {
     window.addEventListener('scroll', this.handleScroll)
   },
-  // 全局事件解绑
-  deactivated () {
+  destroyed () {
+    // console.log("destroyed -> destroyed")
     window.removeEventListener('scroll', this.handleScroll)
   }
+  // activated () {
+  //   console.log("activated -> activated")
+  //   window.addEventListener('scroll', this.handleScroll)
+  // },
+  // // 全局事件解绑
+  // deactivated () {
+  //   window.removeEventListener('scroll', this.handleScroll)
+  // }
 }
 </script>
 

@@ -77,6 +77,7 @@ export default {
     ...mapMutations(['changeCity'])
   },
   mounted () {
+    // 需要加上click: true, 否则移动端点击会失效
     this.scroll = new Bscroll(this.$refs.wrapper, { mouseWheel: true, click: true, tap: true })
   }
 }
