@@ -71,10 +71,10 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, '../travel/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, '../travel'),
     assetsSubDirectory: 'static',
     // assetsPublicPath: '/',
     // 打包好的文件部署到后端 v19/travel 文件夹中
