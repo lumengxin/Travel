@@ -133,7 +133,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: '-rltgoDzvO --delete'
           SOURCE: 'travel' # 项目打包后的文件（默认为dist, 需要调整打包配置）
-          REMOTE_HOST: '118.190.217.8' # 阿里云公网地址
+          REMOTE_HOST: 'xx' # 阿里云公网地址
           REMOTE_USER: 'root' # 阿里云登录后默认为 root 用户，并且所在文件夹为 root
           TARGET: '/var/www/html/v19' # 打包后的 travel 文件夹将放在 /var/www/html/v19
 ```
