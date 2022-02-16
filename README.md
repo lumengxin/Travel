@@ -97,7 +97,7 @@ pages () {
 - ssh-keygen -t rsa -C autodeployment -f deployment。生成密钥
 - cat ~/.ssh/deployment.pub >> ~/.ssh/authorized_keys。公钥保存到authorized_keys文件中。
 - deployment中内容复制到secret中，名称需要符合规范，SERVER_SSH_KEY(和ci.yml中一致)
-- 可能出现`Warning: Permanently added '47.97.231.9' (ECDSA) to the list of known hosts.` 
+- 可能出现`Warning: Permanently added 'xx' (ECDSA) to the list of known hosts.` 
   vim ~/.ssh/config创建config文件，写入 UserKnownHostsFile ~/.ssh/known_hosts(待验证)
 - 可能出现的提醒权限不够
   chmod 700 ~/.ssh/authorized_keys(待验证 - 非必须)
